@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | My Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <?php include "./includes/navbar.php" ?>
+
+<body class="bg-gray-500 text-white min-h-screen flex flex-col">
+  <?php include "./includes/navbar.php"; ?>
+
+  <main class="flex-1 p-6">
+    <?php include "./pages/home.php"; ?>
+  </main>
+
+  <footer class="bg-gray-800 text-center py-4">
+    <?php include "./includes/footer.php"; ?>
+  </footer>
 </body>
 </html>
