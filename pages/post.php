@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connection.php'; // Ensure this file connects to your database
+require '../config.php'; // Ensure this file connects to your database
 
 // Fetch posts with user details
 $sql = "SELECT posts.*, users.username, users.avatar FROM posts 

@@ -1,6 +1,6 @@
 <?php
 
-// session_start();
+session_start();
 
 if (!isset($_SESSION['username'])) {
     header("Location: ./pages/login.php");
@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Network Navbar</title>
+    <title>Postify Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/a2e0b8e7d5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['username'])) {
 
         <!-- Right Menu -->
         <div class="flex items-center gap-6">
-            <a href="#" class="relative hover:text-blue-600"><i class="fas fa-home"></i></a>
+            <!-- <a href="#" class="relative hover:text-blue-600"><i class="fas fa-home"></i></a>
             <a href="#" class="relative hover:text-blue-600"><i class="fas fa-edit"></i></a>
             <a href="#" class="relative hover:text-blue-600">
                 <i class="fas fa-bell"></i>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['username'])) {
             <a href="#" class="relative hover:text-blue-600">
                 <i class="fas fa-envelope"></i>
                 <span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1">5</span>
-            </a>
+            </a> -->
             <!-- Dark Mode Toggle -->
             <button id="theme-toggle" class="focus:outline-none">
                 <i id="theme-icon" class="fas"></i>
@@ -85,22 +85,26 @@ if (!isset($_SESSION['username'])) {
         </div>
         <nav class="flex flex-col p-4 gap-2">
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-book-open"></i> Community Blogs</a>
+            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
+            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
+            <a href="/posts/create.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+            <a href="/posts/edit.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-compass"></i> Explore</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-cog"></i> Settings</a>
-            <a href="logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
     <!-- Left Sidebar (Desktop Only) -->
     <div class="hidden lg:flex flex-col w-64 h-screen fixed top-0 left-0 pt-20 px-4 bg-white dark:bg-gray-900 border-r dark:border-gray-700">
-        <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-book-open"></i> Community Blogs</a>
+        <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
+        <a href="/posts/create.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+        <a href="/posts/edit.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-        <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-compass"></i> Explore</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-cog"></i> Settings</a>
-        <a href="logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- JavaScript -->

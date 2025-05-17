@@ -8,13 +8,20 @@
 </head>
 
 <body class="bg-gray-500 text-white min-h-screen flex flex-col">
-  <?php include "./includes/navbar.php"; ?>
+  <?php
+   include "./includes/navbar.php"; 
+   ?>
 
-  <main class="flex-1 p-6">
-    <?php include "./pages/home.php"; ?>
-  </main>
+   <div class="flex  items-center flex-col min-h-screen">
+    <h1 class="text-2xl font-bold mt-4">Welcome to Postify</h1>
+    <p class=" mt-2">Your one-stop platform for sharing and discovering posts.</p>
+   </div>
 
-  <footer class="bg-gray-800 text-center py-4">
+  <!-- <main class="flex-1 p-6">
+    <?php // include "./pages/home.php"; ?>
+  </main> -->
+
+  <footer class="bg-gray-800 text-center py-4 relative z-50">
     <?php include "./includes/footer.php"; ?>
   </footer>
 </body>
