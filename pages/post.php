@@ -65,6 +65,21 @@ $trending_result = mysqli_query($conn, $trending_sql);
                             <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
                             <textarea name="comment" rows="2" placeholder="Write a comment..." class="w-full p-2 rounded-md border dark:bg-gray-700"></textarea>
                             <button type="submit" class="mt-2 px-4 py-1 bg-blue-600 text-white rounded-md">Send</button>
+
+                            <!-- Comment Dropdown -->
+                            <div class="mt-3 relative">
+                                <button onclick="toggleCommentBox(<?php echo $post['id']; ?>)" class="text-blue-600 text-sm">Show Comments</button>
+
+                                <div id="comment-box-<?php echo $post['id']; ?>" class="hidden mt-2 bg-gray-50 dark:bg-gray-800 p-3 rounded shadow">
+                                    <div id="comment-list-<?php echo $post['id']; ?>"></div>
+
+                                    <form onsubmit="submitComment(event, <?php echo $post['id']; ?>)" class="mt-2">
+                                        <textarea name="comment" class="w-full rounded p-2 text-sm" placeholder="Write your comment..." required></textarea>
+                                        <button type="submit" class="mt-1 text-xs bg-blue-600 text-white px-3 py-1 rounded">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+
                         </form>
 
                         <!-- Placeholder for comments -->
@@ -96,34 +111,36 @@ $trending_result = mysqli_query($conn, $trending_sql);
         </div>
     </div>
 
-<script>
-document.querySelectorAll('form.comment-form').forEach(form => {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const postId = this.dataset.postId;
-        const textarea = this.querySelector('textarea');
-        const commentText = textarea.value.trim();
+    <script>
+        document.querySelectorAll('form.comment-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const postId = this.dataset.postId;
+                const textarea = this.querySelector('textarea');
+                const commentText = textarea.value.trim();
 
-        if (!commentText) return;
+                if (!commentText) return;
 
-        fetch('post_comment.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `post_id=${postId}&comment=${encodeURIComponent(commentText)}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const container = document.querySelector(`#comments-${postId}`);
-                container.insertAdjacentHTML('beforeend', data.html);
-                textarea.value = '';
-            } else {
-                alert('Failed to post comment.');
-            }
+                fetch('post_comment.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `post_id=${postId}&comment=${encodeURIComponent(commentText)}`
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const container = document.querySelector(`#comments-${postId}`);
+                            container.insertAdjacentHTML('beforeend', data.html);
+                            textarea.value = '';
+                        } else {
+                            alert('Failed to post comment.');
+                        }
+                    });
+            });
         });
-    });
-});
-</script>
+    </script>
 
 
 </body>
