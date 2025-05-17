@@ -86,12 +86,10 @@ if (!isset($_SESSION['username'])) {
         <nav class="flex flex-col p-4 gap-2">
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-book-open"></i> Community Blogs</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
-            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
-            <a href="/posts/create.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
-            <a href="/posts/edit.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
+            <a href="../actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+            <a href="../actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-cog"></i> Settings</a>
             <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
@@ -99,11 +97,10 @@ if (!isset($_SESSION['username'])) {
     <!-- Left Sidebar (Desktop Only) -->
     <div class="hidden lg:flex flex-col w-64 h-screen fixed top-0 left-0 pt-20 px-4 bg-white dark:bg-gray-900 border-r dark:border-gray-700">
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
-        <a href="/posts/create.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
-        <a href="/posts/edit.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
+        <a href="../actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+        <a href="../actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-        <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-cog"></i> Settings</a>
         <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
