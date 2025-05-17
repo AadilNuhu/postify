@@ -1,65 +1,123 @@
 <?php
 session_start();
-require './config.php';
+require 'config.php'; // Your DB connection file
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ./pages/login.php');
-    exit();
+    header("Location: login.php");
+    exit;
 }
 
-$user_id = $_SESSION['user_id'];
-$content = trim($_POST['content'] ?? '');
+$message = '';
 
-$image_url = null;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $user_id = $_SESSION['user_id'];
+    $content = trim($_POST['content']);
+    $media_url = null;
 
-if (!empty($_FILES['image']['name'])) {
-    $target_dir = "uploads/";
-    if (!is_dir($target_dir)) mkdir($target_dir, 0755, true);
+    if (!empty($_FILES['media']['name'])) {
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4'];
+        $file_type = $_FILES['media']['type'];
+        $file_tmp = $_FILES['media']['tmp_name'];
+        $file_name = time() . "_" . basename($_FILES['media']['name']);
+        $upload_path = "uploads/" . $file_name;
 
-    $image_file = $target_dir . basename($_FILES["image"]["name"]);
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $image_file)) {
-        $image_url = $image_file;
+        if (in_array($file_type, $allowed_types)) {
+            if (move_uploaded_file($file_tmp, $upload_path)) {
+                $media_url = $upload_path;
+            } else {
+                $message = "File upload failed!";
+            }
+        } else {
+            $message = "Invalid file type. Only JPG, PNG, GIF, and MP4 allowed.";
+        }
     }
-}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($content === '' && !$image_url) {
-        echo "Post content or image required.";
-        exit();
+    if ($content || $media_url) {
+        $stmt = $conn->prepare("INSERT INTO posts (user_id, content, image_url) VALUES (?, ?, ?)");
+        $stmt->bind_param("iss", $user_id, $content, $media_url);
+        $stmt->execute();
+        $stmt->close();
+        header("Location: home.php");
+        exit;
+    } else {
+        $message = "Post content or media is required.";
     }
-
-    $stmt = $conn->prepare("INSERT INTO posts (user_id, content, image_url, created_at) VALUES (?, ?, ?, NOW())");
-    $stmt->bind_param("iss", $user_id, $content, $image_url);
-    $stmt->execute();
-
-    header('Location: ../index.php');
-    exit();
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Create a Post</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 py-8">
-    <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
-        <h2 class="text-2xl font-semibold mb-4">Create a Post</h2>
-        <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
-            <div>
-                <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
-                <textarea name="content" id="content" rows="4" class="w-full p-2 border border-gray-300 rounded" placeholder="What's on your mind?"></textarea>
+
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white p-6">
+
+    <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-4 text-center">Create Post</h2>
+
+        <?php if ($message): ?>
+            <p class="text-red-500 text-center mb-4"><?php echo htmlspecialchars($message); ?></p>
+        <?php endif; ?>
+
+        <form action="create_post.php" method="POST" enctype="multipart/form-data">
+            <textarea name="content" placeholder="What's on your mind?" rows="4"
+                class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+
+            <input type="file" name="media" accept="image/*,video/*"
+                class="mb-4 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                   file:rounded-full file:border-0 file:text-sm file:font-semibold
+                   file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+
+            <!-- Media Preview Section -->
+            <div id="preview" class="mb-4 hidden">
+                <p class="font-semibold mb-1 text-gray-600">Preview:</p>
+                <img id="previewImage" class="w-full rounded-lg hidden" />
+                <video id="previewVideo" class="w-full rounded-lg hidden" controls></video>
             </div>
-            <div>
-                <label for="image" class="block text-gray-700 font-medium mb-2">Upload Image</label>
-                <input type="file" name="image" id="image" class="block w-full text-sm text-gray-600">
-            </div>
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+
+            <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all">
                 Post
             </button>
         </form>
     </div>
+
+    <script>
+        const mediaInput = document.querySelector('input[name="media"]');
+        const previewSection = document.getElementById('preview');
+        const previewImage = document.getElementById('previewImage');
+        const previewVideo = document.getElementById('previewVideo');
+
+        mediaInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (!file) return;
+
+            const fileType = file.type;
+
+            if (fileType.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.classList.remove('hidden');
+                    previewVideo.classList.add('hidden');
+                    previewSection.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else if (fileType.startsWith("video/")) {
+                const url = URL.createObjectURL(file);
+                previewVideo.src = url;
+                previewVideo.classList.remove('hidden');
+                previewImage.classList.add('hidden');
+                previewSection.classList.remove('hidden');
+            } else {
+                previewSection.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
+
 </html>
