@@ -1,3 +1,14 @@
+<?php
+
+// session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: ./pages/login.php");
+    exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +28,7 @@
         <!-- Left Logo and Hamburger -->
         <div class="flex items-center gap-4">
             <img src="Dpostify.png" alt="Logo" class="w-10 h-10 rounded-full">
-            <span class="text-xl font-semibold">SocialConnect</span>
+            <span class="text-xl font-semibold">Postify</span>
             <!-- Hamburger Menu (Mobile Only) -->
             <button id="mobile-menu-toggle" class="lg:hidden text-xl focus:outline-none">
                 <i class="fas fa-bars"></i>
@@ -56,10 +67,10 @@
                     <?php if (isset($_SESSION['username'])): ?>
                         <a href="profile.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</a>
                         <a href="dashboard.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
-                        <a href="logout.php" class="block px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600">Logout</a>
+                        <a href="../actions/logout.php" class="block px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600">Logout</a>
                     <?php else: ?>
-                        <a href="login.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Login</a>
-                        <a href="signup.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Sign Up</a>
+                        <a href="../pages/login.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Login</a>
+                        <a href="../pages/register.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>
