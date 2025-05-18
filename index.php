@@ -15,6 +15,8 @@
    <div class="flex  items-center flex-col min-h-screen">
     <h1 class="text-2xl font-bold mt-4">Welcome to Postify</h1>
     <p class=" mt-2">Your one-stop platform for sharing and discovering posts.</p>
+
+    
    </div>
 
   <!-- <main class="flex-1 p-6">
