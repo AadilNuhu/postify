@@ -7,7 +7,6 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,47 +22,40 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition duration-300">
-    <!-- Top Navbar -->
     <nav class="flex items-center justify-between px-4 py-2 shadow-md bg-white dark:bg-gray-800 sticky top-0 z-50">
-        <!-- Left Logo and Hamburger -->
         <div class="flex items-center gap-4">
             <img src="Dpostify.png" alt="Logo" class="w-10 h-10 rounded-full">
-            <span class="text-xl font-semibold">Postify</span>
-            <!-- Hamburger Menu (Mobile Only) -->
-            <button id="mobile-menu-toggle" class="lg:hidden text-xl focus:outline-none">
+            <span class="text-xl font-semibold text-gray-900 dark:text-white">Postify</span>
+            <button id="mobile-menu-toggle" class="lg:hidden text-xl focus:outline-none text-gray-900 dark:text-white">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
-        <!-- Search Bar -->
         <div class="hidden md:flex flex-1 justify-center">
-            <input type="text" placeholder="Search..." class="w-2/3 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring dark:bg-gray-700 dark:border-gray-600" />
+            <input type="text" placeholder="Search..." class="w-2/3 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
         </div>
 
-        <!-- Right Menu -->
         <div class="flex items-center gap-6">
-            <!-- <a href="#" class="relative hover:text-blue-600"><i class="fas fa-home"></i></a>
-            <a href="#" class="relative hover:text-blue-600"><i class="fas fa-edit"></i></a>
-            <a href="#" class="relative hover:text-blue-600">
+            <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white"><i class="fas fa-home"></i></a>
+            <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white"><i class="fas fa-edit"></i></a>
+            <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white">
                 <i class="fas fa-bell"></i>
                 <span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1">3</span>
             </a>
-            <a href="#" class="relative hover:text-blue-600">
+            <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white">
                 <i class="fas fa-envelope"></i>
                 <span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1">5</span>
-            </a> -->
-            <!-- Dark Mode Toggle -->
-            <button id="theme-toggle" class="focus:outline-none">
+            </a>
+            <button id="theme-toggle" class="focus:outline-none text-gray-900 dark:text-white">
                 <i id="theme-icon" class="fas"></i>
             </button>
-            <!-- User Dropdown -->
             <div class="relative group">
-                <button class="flex items-center gap-2 focus:outline-none">
+                <button class="flex items-center gap-2 focus:outline-none text-gray-900 dark:text-white">
                     <img src="<?php echo $_SESSION['avatar'] ?? 'images.jpeg'; ?>" alt="Avatar" class="w-8 h-8 rounded-full">
                     <span class="hidden md:inline-block font-medium"><?php echo $_SESSION['username'] ?? 'Guest'; ?></span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
-                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
                     <?php if (isset($_SESSION['username'])): ?>
                         <a href="profile.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</a>
                         <a href="dashboard.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
@@ -77,34 +69,31 @@ if (!isset($_SESSION['username'])) {
         </div>
     </nav>
 
-    <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu" class="lg:hidden fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 shadow transform -translate-x-full transition-transform z-50">
+    <div id="mobile-menu" class="lg:hidden fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 shadow transform -translate-x-full transition-transform z-50 text-gray-900 dark:text-white">
         <div class="p-4 border-b dark:border-gray-700 flex items-center justify-between">
             <span class="text-lg font-semibold">Menu</span>
-            <button id="mobile-menu-close" class="text-xl"><i class="fas fa-times"></i></button>
+            <button id="mobile-menu-close" class="text-xl text-gray-900 dark:text-white"><i class="fas fa-times"></i></button>
         </div>
         <nav class="flex flex-col p-4 gap-2">
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-book-open"></i> Community Blogs</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
-            <a href="../actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
-            <a href="../actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
+            <a href="./actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+            <a href="./actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-            <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="./actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
-    <!-- Left Sidebar (Desktop Only) -->
-    <div class="hidden lg:flex flex-col w-64 h-screen fixed top-0 left-0 pt-20 px-4 bg-white dark:bg-gray-900 border-r dark:border-gray-700">
+    <div class="hidden lg:flex flex-col w-64 h-screen fixed top-0 left-0 pt-20 px-4 bg-white dark:bg-gray-900 border-r dark:border-gray-700 text-gray-900 dark:text-white">
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
-        <a href="../actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
-        <a href="../actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
+        <a href="./actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
+        <a href="./actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-        <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="./actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const toggle = document.getElementById('theme-toggle');
         const icon = document.getElementById('theme-icon');

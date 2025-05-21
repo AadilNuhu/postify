@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $stmt->close();
             echo "<script>alert('post uploaded successfully')</script>";
-            echo "<script>window.open('../index.php')</script>";
+            echo "<script>window.open('../index.php',_self)</script>";
             exit;
         } else {
             $message = "Database error: could not save post.";
@@ -66,15 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Create Post</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white p-6">
+<body class="flex justify-center items-center min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white p-6">
 
-    <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+    <div class="w-full md:w-[40%] bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
         <h2 class="text-2xl font-bold mb-4 text-center">Create a Post</h2>
 
         <?php if ($message): ?>
@@ -100,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all">
                 Post
             </button>
+            <p class="flex justify-center items-center py-4">Go Back to <a href="../index.php" class="ml-2 underline"> Homepage</a></p>
         </form>
     </div>
 
@@ -109,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         const previewImage = document.getElementById('previewImage');
         const previewVideo = document.getElementById('previewVideo');
 
-        mediaInput.addEventListener('change', function () {
+        mediaInput.addEventListener('change', function() {
             const file = this.files[0];
             if (!file) return;
 
@@ -117,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (fileType.startsWith("image/")) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     previewImage.src = e.target.result;
                     previewImage.classList.remove('hidden');
                     previewVideo.classList.add('hidden');
@@ -136,4 +138,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     </script>
 </body>
+
 </html>
