@@ -1,3 +1,16 @@
+<?php
+if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div id="success-message" style="background:#d1fae5;color:#065f46;padding:10px;margin:10px 0;border-radius:5px;text-align:center;">
+        Post uploaded successfully!
+    </div>
+    <script>
+        setTimeout(function() {
+            var msg = document.getElementById('success-message');
+            if (msg) msg.style.display = 'none';
+        }, 2000);
+    </script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

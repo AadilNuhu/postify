@@ -52,8 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("iss", $user_id, $content, $media_url);
         if ($stmt->execute()) {
             $stmt->close();
-            echo "<script>alert('post uploaded successfully')</script>";
-            echo "<script>window.open('../index.php',_self)</script>";
+            header("Location: ../index.php?success=1");
             exit;
         } else {
             $message = "Database error: could not save post.";
