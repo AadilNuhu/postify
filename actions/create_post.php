@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $stmt->close();
             echo "<script>alert('post uploaded successfully')</script>";
-            echo "<script>window.open('../index.php',_self)</script>";
+            /* echo "<script>window.open('../index.php',_self)</script>"; */
             exit;
         } else {
             $message = "Database error: could not save post.";
