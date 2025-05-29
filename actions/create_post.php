@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="flex justify-center items-center min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white p-6">
 
     <div class="w-full md:w-[40%] bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-        <h2 class="text-2xl font-bold mb-4 text-center">Create a Post</h2>
+        <h2 class="text-3xl font-bold mb-4 text-center text-purple-600">Create a Post</h2>
 
         <?php if ($message): ?>
             <p class="text-red-500 text-center mb-4"><?php echo htmlspecialchars($message); ?></p>

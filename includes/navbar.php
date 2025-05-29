@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="flex items-center gap-6">
             <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white"><i class="fas fa-home"></i></a>
-            <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white"><i class="fas fa-edit"></i></a>
+            <!-- <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white"><i class="fas fa-edit"></i></a> -->
             <a href="#" class="relative hover:text-blue-600 text-gray-900 dark:text-white">
                 <i class="fas fa-bell"></i>
                 <span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1">3</span>
@@ -46,9 +46,9 @@ if (!isset($_SESSION['username'])) {
                 <i class="fas fa-envelope"></i>
                 <span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1">5</span>
             </a>
-            <button id="theme-toggle" class="focus:outline-none text-gray-900 dark:text-white">
+            <!-- <button id="theme-toggle" class="focus:outline-none text-gray-900 dark:text-white">
                 <i id="theme-icon" class="fas"></i>
-            </button>
+            </button> -->
             <div class="relative group">
                 <button class="flex items-center gap-2 focus:outline-none text-gray-900 dark:text-white">
                     <img src="<?php echo $_SESSION['avatar'] ?? 'images.jpeg'; ?>" alt="Avatar" class="w-8 h-8 rounded-full">
@@ -76,22 +76,22 @@ if (!isset($_SESSION['username'])) {
         </div>
         <nav class="flex flex-col p-4 gap-2">
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-book-open"></i> Community Blogs</a>
-            <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
+            <a href="../index.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
             <a href="./actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
             <a href="./actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-            <a href="./actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
     <div class="hidden lg:flex flex-col w-64 h-screen fixed top-0 left-0 pt-20 px-4 bg-white dark:bg-gray-900 border-r dark:border-gray-700 text-gray-900 dark:text-white">
-        <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
+        <a href="./index.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-list"></i> View All Posts</a>
         <a href="./actions/create_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-plus-circle"></i> Create Post</a>
         <a href="./actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-edit"></i> Edit Post</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-users"></i> Friends</a>
         <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-hashtag"></i> Topics</a>
-        <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="./actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <script>

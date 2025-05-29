@@ -55,7 +55,7 @@ $posts = $stmt->get_result();
   <div class="max-w-3xl mx-auto">
     <div class="flex items-center justify-between mb-4">
         <h1 class="text-3xl font-bold text-purple-700 mb-6">Manage My Posts</h1>
-        <a href="../index.php" class="text-purple-500 underline">Go To Homepage</a>
+        <a href="../index.php" class="text-purple-500 underline text-purple-500">Go To Homepage</a>
     </div>
 
     <?php while ($post = $posts->fetch_assoc()): ?>
