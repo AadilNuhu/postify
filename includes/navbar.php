@@ -108,7 +108,7 @@ if (!isset($_SESSION['username'])) {
             <a href="./actions/edit_post.php" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"><i class="fas fa-edit"></i> Edit Post</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"><i class="fas fa-users"></i> Friends</a>
             <a href="#" class="py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"><i class="fas fa-hashtag"></i> Topics</a>
-            <a href="../actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="./actions/logout.php" class="py-2 px-4 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 

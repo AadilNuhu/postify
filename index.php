@@ -65,56 +65,6 @@ $result = $conn->query($sql);
     #theme-toggle:hover {
       @apply transform rotate-12;
     }
-    
-    /* Professional Sidebar Styles */
-    .sidebar {
-      @apply fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-40 transform -translate-x-full transition-all duration-300 ease-in-out;
-    }
-    
-    .sidebar.open {
-      @apply transform translate-x-0;
-    }
-    
-    .overlay {
-      @apply fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 invisible transition-all duration-300;
-    }
-    
-    .overlay.open {
-      @apply opacity-100 visible;
-    }
-    
-    /* Hamburger Menu Animation */
-    .hamburger-menu {
-      @apply relative w-6 h-6 transition-all duration-300;
-    }
-    
-    .hamburger-line {
-      @apply absolute left-0 w-full h-0.5 bg-gray-900 dark:bg-white transition-all duration-300;
-    }
-    
-    .hamburger-line:nth-child(1) {
-      @apply top-1;
-    }
-    
-    .hamburger-line:nth-child(2) {
-      @apply top-1/2 -translate-y-1/2;
-    }
-    
-    .hamburger-line:nth-child(3) {
-      @apply bottom-1;
-    }
-    
-    .hamburger-menu.open .hamburger-line:nth-child(1) {
-      @apply top-1/2 -translate-y-1/2 rotate-45;
-    }
-    
-    .hamburger-menu.open .hamburger-line:nth-child(2) {
-      @apply opacity-0;
-    }
-    
-    .hamburger-menu.open .hamburger-line:nth-child(3) {
-      @apply bottom-1/2 translate-y-1/2 -rotate-45;
-    }
   </style>
   <script>
     // Check for saved theme preference or use system preference
@@ -153,7 +103,7 @@ $result = $conn->query($sql);
           Share your thoughts, moments, and creativity with the world. Connect with others through posts, images, and videos.
         </p>
         <div class="mt-6">
-          <a href="./create_post.php" class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-full transition duration-300 shadow-lg hover:shadow-xl">
+          <a href="./actions/create_post.php" class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-full transition duration-300 shadow-lg hover:shadow-xl">
             <i class="fas fa-plus mr-2"></i> Create New Post
           </a>
         </div>
@@ -229,9 +179,9 @@ $result = $conn->query($sql);
   <?php include "./includes/footer.php"; ?>
 
   <!-- Theme Toggle Button -->
-  <button id="theme-toggle" class="fixed bottom-6 right-6 bg-gray-200 dark:bg-gray-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
+  <!-- <button id="theme-toggle" class="fixed bottom-6 right-6 bg-gray-200 dark:bg-gray-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
     <i id="theme-icon" class="fas fa-moon dark:fa-sun text-gray-800 dark:text-yellow-300 text-lg"></i>
-  </button>
+  </button> -->
 
   <script>
     // Theme toggle functionality
