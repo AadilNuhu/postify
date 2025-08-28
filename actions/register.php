@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../config.php';
+error_log("Register attempt: username=$username, email=$email, password=" . ($password ? 'set' : 'empty'));
 
 $username = trim($_POST['username'] ?? '');
 $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
@@ -10,13 +11,13 @@ $avatarPath = null;
 
 if (!$username || !$email || !$password) {
     $_SESSION['register_error'] = "All fields are required.";
-    header("Location: ../pages/signup.php");
+    header("Location: ../pages/register.php");
     exit();
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['register_error'] = "Invalid email format.";
-    header("Location: ../pages/signup.php");
+    header("Location: ../pages/register.php");
     exit();
 }
 
@@ -28,7 +29,7 @@ if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
 
     if (!in_array($fileExt, $allowed)) {
         $_SESSION['register_error'] = "Only JPG, PNG, or GIF files allowed.";
-        header("Location: ../pages/signup.php");
+        header("Location: ../pages/register.php");
         exit();
     }
 
@@ -41,7 +42,7 @@ if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
         $avatarPath = "uploads/" . $newName;
     } else {
         $_SESSION['register_error'] = "Failed to upload avatar.";
-        header("Location: ../pages/signup.php");
+        header("Location: ../pages/register.php");
         exit();
     }
 }
@@ -57,7 +58,7 @@ if ($stmt->execute()) {
     exit();
 } else {
     $_SESSION['register_error'] = "Registration failed. Email might already be in use.";
-    header("Location: ../pages/signup.php");
+    header("Location: ../pages/register.php");
     exit();
 }
 ?>

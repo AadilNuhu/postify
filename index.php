@@ -153,8 +153,8 @@ $result = $conn->query($sql);
                       </video>
                     <?php else: ?>
                       <img class="w-full h-64 object-cover" 
-                           src="<?php echo htmlspecialchars($post['image_url']); ?>" 
-                           alt="Post Media" />
+                        src="./actions/<?php echo (strpos($post['image_url'], 'uploads/') === 0 ? $post['image_url'] : 'uploads/' . $post['image_url']); ?>" 
+                        alt="Post Media" />
                     <?php endif; ?>
                   </div>
                 <?php endif; ?>

@@ -10,6 +10,14 @@
   <form action="../actions/register.php" method="POST" enctype="multipart/form-data" class="bg-white p-8 rounded-xl shadow-md w-full max-w-md space-y-4">
     <h2 class="text-2xl font-bold text-center text-gray-700">Create an Account</h2>
 
+    <?php
+      session_start();
+      if (!empty($_SESSION['register_error'])): ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <?= htmlspecialchars($_SESSION['register_error']); unset($_SESSION['register_error']); ?>
+        </div>
+    <?php endif; ?>
+
     <input name="username" type="text" placeholder="Username" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
     <input name="email" type="email" placeholder="Email" required class="w-full px-4 py-2 border rounded-lg">
     <input name="password" type="password" placeholder="Password" required class="w-full px-4 py-2 border rounded-lg">
